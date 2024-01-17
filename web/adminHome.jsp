@@ -31,6 +31,8 @@
                 <td>${account.password}</td>
             </tr>
         </table>
+        <!--manageAccount-->
+        <p><a href="admin">manage accounts</a></p>
         <!--update-->
         <button onclick="Update('${account.accid}','${account.email}', '${account.fullname}', '${account.password}')">Chinh sua account</button>
         <form action="admin?action=update" method="POST" style="display: none" id="updateAccount">
