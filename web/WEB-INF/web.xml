@@ -8,6 +8,14 @@
         <servlet-name>AdminHomeServlet</servlet-name>
         <servlet-class>controller.AdminHomeServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>adminHomeController</servlet-name>
+        <servlet-class>controller.adminHomeController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>logoutController</servlet-name>
+        <servlet-class>controller.logoutController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginController</servlet-name>
         <url-pattern>/LoginController</url-pattern>
@@ -15,6 +23,14 @@
     <servlet-mapping>
         <servlet-name>AdminHomeServlet</servlet-name>
         <url-pattern>/admin</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>adminHomeController</servlet-name>
+        <url-pattern>/adminHomeController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>logoutController</servlet-name>
+        <url-pattern>/logoutController</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -77,6 +77,37 @@
                 <br/><br/>
             </table>
         </form>
+        
+        <!--update-->
+        <button onclick="Update('${sessionScope.loginedUser.accid}','${sessionScope.loginedUser.email}', '${sessionScope.loginedUser.fullname}', '${sessionScope.loginedUser.password}  ')">Chinh sua account</button>
+        <form action="admin?action=update" method="POST" style="display: none" id="updateAccount">
+            <h1>UPDATE ACCOUNT</h1>
+            <table>
+                <tr>
+                    <td>ID</td>
+                    <td><input type="text" name="accid" value="" /></td>
+                </tr>
+                <tr>
+                    <td>Email</td>
+                    <td><input type="text" name="email" value="" /></td>
+                </tr>
+                <tr>
+                    <td>Fullname</td>
+                    <td><input type="text" name="fullname" value="" /></td>
+                </tr>
+                <tr>
+                    <td>Password</td>
+                    <td><input type="password" name="password" value="" /></td>
+                </tr>
+                <tr>
+                    <td><button type="submit"/>Update</td>
+                </tr>
+                <br/><br/>
+            </table>
+
+
+        </form>
+    </body>
         <script>
             function addAccount() {
                 let form = document.getElementById('addAccount');
@@ -86,6 +117,21 @@
                 } else {
                     form.style.display = 'none'
                 }
+            }
+            function Update(id,email,fullname,password) {
+                let updateForm = document.getElementById('updateAccount');
+                let styleDisplay = updateForm.style.display;
+                if (styleDisplay == 'none') {
+                    updateForm.style.display = 'block';
+                } else {
+                    updateForm.style.display = 'none';
+                }
+                
+                // Điền thông tin có sẵn vào form
+                document.querySelector('#updateAccount input[name="accid"]').value = id;
+                document.querySelector('#updateAccount input[name="email"]').value = email;
+                document.querySelector('#updateAccount input[name="fullname"]').value = fullname;
+                document.querySelector('#updateAccount input[name="password"]').value = password;
             }
         </script>
     </body>

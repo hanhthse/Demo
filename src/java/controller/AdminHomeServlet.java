@@ -13,6 +13,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import model.Account;
 
 /**
@@ -20,8 +21,6 @@ import model.Account;
  * @author Acer
  */
 public class AdminHomeServlet extends HttpServlet {
-
-
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -31,6 +30,10 @@ public class AdminHomeServlet extends HttpServlet {
         //load du lieu tu DB
         List<Account> list = dao.getAll();
         // set du lieu trong request
+        
+        HttpSession session = request.getSession();
+        Account acc = (Account) session.getAttribute("loginedUser");
+        
         request.setAttribute("listAccount", list);
         // chuyen sang jsp de hien thi
         request.getRequestDispatcher("display.jsp").forward(request, response);
@@ -61,7 +64,7 @@ public class AdminHomeServlet extends HttpServlet {
                 //delete database
                 System.out.println(id);
                 dao.delete(id);
-                
+
                 response.sendRedirect("admin");
                 break;
             case "add":
@@ -70,7 +73,7 @@ public class AdminHomeServlet extends HttpServlet {
                 String email = request.getParameter("email");
                 String name = request.getParameter("fullname");
                 String pwd = request.getParameter("password");
-                dao.addAccount(accid,email,name,pwd);
+                dao.addAccount(accid, email, name, pwd);
                 response.sendRedirect("admin");
                 break;
             default:
@@ -89,6 +92,5 @@ public class AdminHomeServlet extends HttpServlet {
         dao.update(account);
         return account;
     }
-
 
 }
